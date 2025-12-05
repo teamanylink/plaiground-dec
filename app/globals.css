@@ -508,16 +508,59 @@
   font-size: 1.2rem;
 }
 
-/* Animations */
+/* Apple-style Animations */
+@keyframes fade-in-blur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+
 .reveal-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: blur(10px);
+  transform: translateY(30px) scale(0.95);
+  animation: fade-in-blur 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-play-state: paused;
 }
 
 .reveal-up.in-view {
-  opacity: 1;
-  transform: translateY(0);
+  animation-play-state: running;
+}
+
+/* Staggered animation for child elements */
+.reveal-up.in-view>* {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(20px);
+  animation: fade-in-blur 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-up.in-view>*:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.reveal-up.in-view>*:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.reveal-up.in-view>*:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.reveal-up.in-view>*:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.reveal-up.in-view>*:nth-child(5) {
+  animation-delay: 0.5s;
 }
 
 .anim-list li {

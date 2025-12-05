@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   title: "Plaiground | AI Revenue Architecture for the Scaling Enterprise",
   description:
     "We don't bolt on AI — we re-engineer your core workflows to deliver $100K+ in cost savings and revenue growth, guaranteed.",
-  generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
