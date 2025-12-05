@@ -1,12 +1,13 @@
 import RevealSection from "./reveal-section"
 import TiltCard from "./tilt-card"
 import MegaButton from "./mega-button"
+import { Check } from "lucide-react"
 
 export default function BleedingCapitalSection() {
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24 px-4 md:px-6">
       <RevealSection>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
+        <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
           If You&apos;re Not Automating Core Operations, <br />
           You&apos;re Already <span className="editorial">Bleeding Capital</span>
         </h2>
@@ -32,16 +33,16 @@ export default function BleedingCapitalSection() {
               </div>
               <ul className="anim-list list-none">
                 <li className="mb-4 flex gap-4 text-[#ddd] items-center">
-                  <span className="check">✓</span> Automating entire departments
+                  <Check className="w-5 h-5 text-[var(--neon-lime)] shrink-0" /> Automating entire departments
                 </li>
                 <li className="mb-4 flex gap-4 text-[#ddd] items-center">
-                  <span className="check">✓</span> Scaling without proportional hiring
+                  <Check className="w-5 h-5 text-[var(--neon-lime)] shrink-0" /> Scaling without proportional hiring
                 </li>
                 <li className="mb-4 flex gap-4 text-[#ddd] items-center">
-                  <span className="check">✓</span> Leveraging data you&apos;re ignoring
+                  <Check className="w-5 h-5 text-[var(--neon-lime)] shrink-0" /> Leveraging data you&apos;re ignoring
                 </li>
                 <li className="mb-4 flex gap-4 text-[#ddd] items-center">
-                  <span className="check">✓</span> Operating 24/7 with zero burnout
+                  <Check className="w-5 h-5 text-[var(--neon-lime)] shrink-0" /> Operating 24/7 with zero burnout
                 </li>
               </ul>
             </div>

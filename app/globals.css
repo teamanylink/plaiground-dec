@@ -86,7 +86,7 @@
 
 @theme inline {
   --font-sans: "Outfit", "Outfit Fallback", sans-serif;
-  --font-display: "Space Grotesk", "Space Grotesk Fallback", sans-serif;
+  --font-display: var(--font-jakarta);
   --font-edit: "Playfair Display", "Playfair Display Fallback", serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -133,9 +133,11 @@
     margin: 0;
     padding: 0;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   body {
     background-color: var(--bg-void);
     color: #fff;
@@ -242,17 +244,16 @@
   padding: 2.5rem;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .tilt-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.1),
-    transparent 40%
-  );
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.1),
+      transparent 40%);
   border-radius: 24px;
   pointer-events: none;
   opacity: 0;
@@ -267,6 +268,71 @@
 .tilt-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Premium Border Card (New) */
+.premium-border-card {
+  border: none !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04), inset 0 0 20px rgba(255, 255, 255, 0.02) !important;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.0) 100%);
+}
+
+.premium-border-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05) 40%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Premium Border Card - Aqua Variant */
+.premium-border-card-aqua {
+  border: none !important;
+  box-shadow: inset 0 1px 0 0 rgba(0, 255, 136, 0.08), inset 0 0 20px rgba(0, 255, 136, 0.03) !important;
+  position: relative;
+  background: linear-gradient(180deg, rgba(0, 255, 136, 0.02) 0%, rgba(0, 255, 136, 0.0) 100%);
+}
+
+.premium-border-card-aqua::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(0, 255, 136, 0.4), rgba(0, 255, 136, 0.15) 40%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Premium Border Card - Lime Variant */
+.premium-border-card-lime {
+  border: none !important;
+  box-shadow: inset 0 1px 0 0 rgba(204, 255, 0, 0.08), inset 0 0 20px rgba(204, 255, 0, 0.03) !important;
+  position: relative;
+  background: linear-gradient(180deg, rgba(204, 255, 0, 0.02) 0%, rgba(204, 255, 0, 0.0) 100%);
+}
+
+.premium-border-card-lime::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(204, 255, 0, 0.4), rgba(204, 255, 0, 0.15) 40%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* Mega button */
@@ -365,9 +431,28 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 20s linear infinite;
+}
+
+.animate-scroll-up:hover {
+  animation-play-state: paused;
 }
 
 /* Comparison table */
@@ -449,24 +534,31 @@
 .in-view .anim-list li:nth-child(1) {
   transition-delay: 0.1s;
 }
+
 .in-view .anim-list li:nth-child(2) {
   transition-delay: 0.2s;
 }
+
 .in-view .anim-list li:nth-child(3) {
   transition-delay: 0.3s;
 }
+
 .in-view .anim-list li:nth-child(4) {
   transition-delay: 0.4s;
 }
+
 .in-view .anim-list li:nth-child(5) {
   transition-delay: 0.5s;
 }
+
 .in-view .anim-list li:nth-child(6) {
   transition-delay: 0.6s;
 }
+
 .in-view .anim-list li:nth-child(7) {
   transition-delay: 0.7s;
 }
+
 .in-view .anim-list li:nth-child(8) {
   transition-delay: 0.8s;
 }
@@ -476,6 +568,7 @@
     box-shadow: 0 0 60px var(--neon-cyan);
     opacity: 0.8;
   }
+
   100% {
     box-shadow: 0 0 100px var(--neon-cyan);
     opacity: 0.5;
@@ -488,16 +581,49 @@
     grid-template-columns: 1fr !important;
     gap: 3rem;
   }
+
   .grid-faq {
     grid-template-columns: 1fr !important;
   }
+
   .col-4,
   .col-6,
   .col-8 {
     grid-column: span 12 !important;
   }
+
   .hero-title {
     font-size: 2.8rem !important;
+  }
+
+  .tilt-card {
+    padding: 1.5rem !important;
+  }
+
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .tilt-card {
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+  }
+
+  .btn-mega {
+    padding: 1rem 2rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .tag-pill {
+    font-size: 0.65rem !important;
+    padding: 0.5em 1em !important;
   }
 }
 
@@ -506,17 +632,20 @@
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
 }
 
 @keyframes skeleton-pulse {
+
   0%,
   100% {
     opacity: 0.4;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.1);
@@ -524,28 +653,24 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 240, 255, 0.05),
-    rgba(0, 240, 255, 0.15),
-    rgba(0, 240, 255, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(0, 240, 255, 0.05),
+      rgba(0, 240, 255, 0.15),
+      rgba(0, 240, 255, 0.05),
+      transparent);
   background-size: 200% 100%;
   animation: skeleton-shimmer 2s ease-in-out infinite;
 }
 
 /* Added aqua variant skeleton shimmer for Path 2 */
 .skeleton-shimmer-aqua {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 255, 136, 0.05),
-    rgba(0, 255, 136, 0.15),
-    rgba(0, 255, 136, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(0, 255, 136, 0.05),
+      rgba(0, 255, 136, 0.15),
+      rgba(0, 255, 136, 0.05),
+      transparent);
   background-size: 200% 100%;
   animation: skeleton-shimmer 2s ease-in-out infinite;
 }

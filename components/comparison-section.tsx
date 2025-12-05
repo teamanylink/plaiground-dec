@@ -1,5 +1,6 @@
 import RevealSection from "./reveal-section"
 import MegaButton from "./mega-button"
+import { Check, X } from "lucide-react"
 
 export default function ComparisonSection() {
   const features = [
@@ -16,9 +17,9 @@ export default function ComparisonSection() {
   const startup = ["✗", "✗", "✓", "✗ (Never ships)", "✗", "✗"]
 
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24 px-4 md:px-6">
       <RevealSection>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-8 max-w-[1000px] mx-auto">
+        <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-8 max-w-[1000px] mx-auto">
           Plaiground Is Your <span className="editorial">Fractional AI Leadership Team</span>
         </h2>
         <p className="text-[#94a3b8] text-center mb-8 text-lg">
@@ -42,7 +43,7 @@ export default function ComparisonSection() {
               <div>
                 {features.map((_, i) => (
                   <div key={i} className="comp-cell">
-                    <span className="check">✓</span>Included
+                    <Check className="w-5 h-5 text-[var(--neon-lime)] mr-2" /> Included
                   </div>
                 ))}
               </div>
@@ -53,8 +54,20 @@ export default function ComparisonSection() {
                 ENTERPRISE CONSULTANCIES
               </div>
               {consultancy.map((item, i) => (
-                <div key={i} className="comp-cell text-white/70">
-                  {item}
+                <div key={i} className="comp-cell text-white/70 justify-center">
+                  {item.includes("✓") ? (
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-white/40" />
+                      <span>{item.replace("✓", "").trim()}</span>
+                    </div>
+                  ) : item.includes("✗") ? (
+                    <div className="flex items-center gap-2">
+                      <X className="w-4 h-4 text-red-500/40" />
+                      <span>{item.replace("✗", "").trim()}</span>
+                    </div>
+                  ) : (
+                    item
+                  )}
                 </div>
               ))}
             </div>
@@ -62,8 +75,20 @@ export default function ComparisonSection() {
             <div className="text-center">
               <div className="h-[50px] font-bold text-[#666] flex items-center justify-center">AI STARTUPS</div>
               {startup.map((item, i) => (
-                <div key={i} className="comp-cell text-white/70">
-                  {item}
+                <div key={i} className="comp-cell text-white/70 justify-center">
+                  {item.includes("✓") ? (
+                    <div className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-white/40" />
+                      <span>{item.replace("✓", "").trim()}</span>
+                    </div>
+                  ) : item.includes("✗") ? (
+                    <div className="flex items-center gap-2">
+                      <X className="w-4 h-4 text-red-500/40" />
+                      <span>{item.replace("✗", "").trim()}</span>
+                    </div>
+                  ) : (
+                    item
+                  )}
                 </div>
               ))}
             </div>

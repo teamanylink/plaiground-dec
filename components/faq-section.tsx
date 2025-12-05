@@ -1,5 +1,6 @@
 import RevealSection from "./reveal-section"
 import TiltCard from "./tilt-card"
+import { HelpCircle } from "lucide-react"
 
 export default function FAQSection() {
   const faqs = [
@@ -46,20 +47,27 @@ export default function FAQSection() {
   ]
 
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24 px-4 md:px-6">
       <RevealSection>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
+        <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
           Frequently Asked <span className="editorial">Questions</span>
         </h2>
 
         <div className="max-w-[900px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {faqs.map((faq, i) => (
-              <TiltCard key={i} className="!p-8">
-                <h4 className="font-[family-name:var(--font-space-grotesk)] text-base mb-2 text-white">
-                  {faq.question}
-                </h4>
-                <p className="text-sm text-[#aaa]">{faq.answer}</p>
+              <TiltCard key={i} className="!p-8 group">
+                <div className="flex gap-4">
+                  <div className="shrink-0 mt-1">
+                    <HelpCircle className="w-5 h-5 text-[var(--neon-cyan)] opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-base mb-2 text-white">
+                      {faq.question}
+                    </h4>
+                    <p className="text-sm text-[#aaa]">{faq.answer}</p>
+                  </div>
+                </div>
               </TiltCard>
             ))}
           </div>

@@ -4,9 +4,9 @@ import MegaButton from "./mega-button"
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24 px-4 md:px-6">
       <RevealSection>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
+        <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
           Why Companies Choose Us Over Internal Hires or <span className="editorial">Traditional Consultancies</span>
         </h2>
 
@@ -15,10 +15,10 @@ export default function WhyChooseUsSection() {
             className="col-span-12 lg:col-span-4 row-span-2 flex flex-col justify-end"
             style={{ background: "linear-gradient(to top, rgba(0, 240, 255, 0.1), transparent)" }}
           >
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-6xl leading-none text-[var(--neon-cyan)] mb-2">
+            <h3 className="font-display text-6xl leading-none text-[var(--neon-cyan)] mb-2">
               30-60
             </h3>
-            <h4 className="font-[family-name:var(--font-space-grotesk)] text-2xl text-white mb-4">
+            <h4 className="font-display text-2xl text-white mb-4">
               Day Measurable ROI
             </h4>
             <p className="text-[#94a3b8] text-sm">
@@ -27,8 +27,8 @@ export default function WhyChooseUsSection() {
             </p>
           </TiltCard>
 
-          <TiltCard className="col-span-12 lg:col-span-8" style={{ borderColor: "var(--neon-aqua)" }}>
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl text-[var(--neon-aqua)] whitespace-nowrap mb-4">
+          <TiltCard className="col-span-12 lg:col-span-8 premium-border-card-aqua">
+            <h3 className="font-display text-xl text-[var(--neon-aqua)] whitespace-nowrap mb-4">
               True Enterprise Integration
             </h3>
             <p className="text-[#94a3b8]">
@@ -39,7 +39,7 @@ export default function WhyChooseUsSection() {
           </TiltCard>
 
           <TiltCard className="col-span-12 lg:col-span-4">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl text-white mb-4">
+            <h3 className="font-display text-xl text-white mb-4">
               Full Change Management Included
             </h3>
             <p className="text-[#94a3b8] text-sm">
@@ -49,7 +49,7 @@ export default function WhyChooseUsSection() {
           </TiltCard>
 
           <TiltCard className="col-span-12 lg:col-span-4">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl text-white mb-4">
+            <h3 className="font-display text-xl text-white mb-4">
               Proven Cost Reduction Track Record
             </h3>
             <p className="text-[#94a3b8] text-sm">
@@ -58,8 +58,8 @@ export default function WhyChooseUsSection() {
             </p>
           </TiltCard>
 
-          <TiltCard className="col-span-12 lg:col-span-8" style={{ borderColor: "var(--neon-lime)" }}>
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl text-[var(--neon-lime)] mb-4">
+          <TiltCard className="col-span-12 lg:col-span-8 premium-border-card-lime">
+            <h3 className="font-display text-xl text-[var(--neon-lime)] mb-4">
               Financial Accountability Built In
             </h3>
             <p className="text-[#94a3b8]">
@@ -69,7 +69,7 @@ export default function WhyChooseUsSection() {
           </TiltCard>
 
           <TiltCard className="col-span-12 lg:col-span-4">
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl text-white mb-4">
+            <h3 className="font-display text-xl text-white mb-4">
               Risk-Free Partnership Structure
             </h3>
             <p className="text-[#94a3b8] text-sm">

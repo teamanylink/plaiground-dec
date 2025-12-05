@@ -1,85 +1,100 @@
 import RevealSection from "./reveal-section"
 import TiltCard from "./tilt-card"
 import MegaButton from "./mega-button"
+import { Bot, Search, Mail, FileText, BarChart3, DollarSign, CheckCircle2, ArrowUpRight } from "lucide-react"
 
 function WorkflowDashboardSkeleton() {
+  const activities = [
+    { icon: Search, text: "Analyzing market trends...", time: "Now" },
+    { icon: Mail, text: "Drafting outreach to 50 leads...", time: "2m ago" },
+    { icon: Bot, text: "Qualifying prospect: Acme Corp", time: "5m ago" },
+    { icon: FileText, text: "Generating weekly report...", time: "12m ago" },
+    { icon: Search, text: "Scraping competitor pricing...", time: "15m ago" },
+    { icon: Mail, text: "Follow-up sent: John D.", time: "18m ago" },
+    { icon: Bot, text: "Optimizing ad spend...", time: "22m ago" },
+  ]
+
   return (
     <div
-      className="h-[160px] rounded-xl mb-6 overflow-hidden border relative"
+      className="h-[240px] rounded-xl mb-6 overflow-hidden border relative flex flex-col"
       style={{
         background: "rgba(0, 240, 255, 0.02)",
         borderColor: "rgba(0, 240, 255, 0.1)",
       }}
     >
-      {/* Minimal header */}
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b" style={{ borderColor: "rgba(0, 240, 255, 0.08)" }}>
-        <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)] opacity-60" />
-        <div className="h-1.5 w-16 rounded-full skeleton-shimmer opacity-50" />
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: "rgba(0, 240, 255, 0.08)" }}>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-[var(--neon-cyan)] animate-pulse" />
+          <span className="text-xs font-mono text-[var(--neon-cyan)] tracking-wider">AGENT_ACTIVITY_LOG</span>
+        </div>
+        <div className="text-[10px] text-[var(--neon-cyan)] opacity-60 font-mono">LIVE</div>
       </div>
 
-      {/* Clean content */}
-      <div className="p-4 flex gap-6">
-        {/* Simple node flow */}
-        <div className="flex items-center gap-2 flex-1">
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="flex items-center gap-2 flex-1">
-              <div
-                className="w-10 h-10 rounded-lg skeleton-shimmer opacity-40"
-                style={{ animationDelay: `${i * 0.2}s` }}
-              />
-              {i < 2 && <div className="flex-1 h-px bg-[var(--neon-cyan)] opacity-20" />}
+      {/* Scrolling Content */}
+      <div className="flex-1 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(3,3,4,0.8)] z-10 pointer-events-none" />
+
+        <div className="animate-scroll-up p-4 space-y-3">
+          {[...activities, ...activities].map((item, i) => (
+            <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 backdrop-blur-sm">
+              <div className="p-1.5 rounded bg-[rgba(0,240,255,0.1)] text-[var(--neon-cyan)]">
+                <item.icon size={14} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-xs text-white truncate">{item.text}</div>
+                <div className="text-[10px] text-white/40">{item.time}</div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Minimal stats */}
-      <div className="absolute bottom-3 left-4 right-4 flex gap-3">
-        {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="h-1 flex-1 rounded-full skeleton-shimmer opacity-30"
-            style={{ animationDelay: `${i * 0.15}s` }}
-          />
-        ))}
       </div>
     </div>
   )
 }
 
 function AnalyticsDashboardSkeleton() {
+  const events = [
+    { icon: DollarSign, text: "New Deal Closed: $12,500", color: "var(--neon-aqua)" },
+    { icon: ArrowUpRight, text: "Efficiency +45% (MoM)", color: "var(--neon-lime)" },
+    { icon: CheckCircle2, text: "System Optimization Complete", color: "#fff" },
+    { icon: DollarSign, text: "Cost Saving: $4,200", color: "var(--neon-aqua)" },
+    { icon: ArrowUpRight, text: "Lead Velocity: +22%", color: "var(--neon-lime)" },
+  ]
+
   return (
     <div
-      className="h-[160px] rounded-xl mb-6 overflow-hidden border relative"
+      className="h-[240px] rounded-xl mb-6 overflow-hidden border relative flex flex-col"
       style={{
         background: "rgba(0, 255, 136, 0.02)",
         borderColor: "rgba(0, 255, 136, 0.1)",
       }}
     >
-      {/* Minimal header */}
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b" style={{ borderColor: "rgba(0, 255, 136, 0.08)" }}>
-        <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-aqua)] opacity-60" />
-        <div className="h-1.5 w-20 rounded-full skeleton-shimmer-aqua opacity-50" />
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: "rgba(0, 255, 136, 0.08)" }}>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-[var(--neon-aqua)] animate-pulse" />
+          <span className="text-xs font-mono text-[var(--neon-aqua)] tracking-wider">PERFORMANCE_METRICS</span>
+        </div>
+        <BarChart3 size={14} className="text-[var(--neon-aqua)] opacity-60" />
       </div>
 
-      {/* Clean chart bars */}
-      <div className="p-4 flex items-end gap-1.5 h-[100px]">
-        {[35, 55, 40, 70, 50, 85, 60, 75].map((height, i) => (
-          <div
-            key={i}
-            className="flex-1 rounded-sm skeleton-shimmer-aqua opacity-40"
-            style={{
-              height: `${height}%`,
-              animationDelay: `${i * 0.1}s`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Scrolling Content */}
+      <div className="flex-1 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(3,3,4,0.8)] z-10 pointer-events-none" />
 
-      {/* Minimal indicator */}
-      <div className="absolute bottom-3 right-4 flex items-center gap-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-aqua)] opacity-50" />
-        <div className="h-1 w-10 rounded-full skeleton-shimmer-aqua opacity-30" />
+        <div className="animate-scroll-up p-4 space-y-3">
+          {[...events, ...events].map((item, i) => (
+            <div key={i} className="flex items-center gap-3 p-2.5 rounded-lg bg-white/5 border border-white/5 backdrop-blur-sm">
+              <div className="p-1.5 rounded bg-white/10" style={{ color: item.color }}>
+                <item.icon size={14} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-xs font-medium truncate" style={{ color: item.color }}>{item.text}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -87,9 +102,9 @@ function AnalyticsDashboardSkeleton() {
 
 export default function ScaleRevenueSection() {
   return (
-    <section className="py-24">
+    <section className="py-12 md:py-16 lg:py-24 px-4 md:px-6">
       <RevealSection>
-        <h2 className="font-[family-name:var(--font-space-grotesk)] text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
+        <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] text-center tracking-tight leading-[1.1] mb-16 max-w-[1000px] mx-auto">
           Scale Revenue, Not{" "}
           <span className="editorial" style={{ color: "var(--neon-cyan)" }}>
             Headcount
@@ -99,7 +114,7 @@ export default function ScaleRevenueSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <TiltCard style={{ borderTop: "4px solid var(--neon-cyan)" }}>
             <div className="tag-pill">Path 1</div>
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-white mb-2">
+            <h3 className="font-display text-2xl font-bold text-white mb-2">
               Deploy Your AI Workforce
             </h3>
             <p className="text-[#94a3b8] text-lg font-light mb-6">
@@ -130,7 +145,7 @@ export default function ScaleRevenueSection() {
             >
               Path 2
             </div>
-            <h3 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-bold text-white mb-2">
+            <h3 className="font-display text-2xl font-bold text-white mb-2">
               Embed Our AI Integration Team
             </h3>
             <p className="text-[#94a3b8] text-lg font-light mb-6">
