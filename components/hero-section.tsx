@@ -103,19 +103,46 @@ export default function HeroSection() {
   const logos = ["FORBES", "FOX BUSINESS", "YAHOO FINANCE", "TEDX", "JOE ROGAN EXPERIENCE", "ESPN", "ABC NEWS"]
 
   return (
-    <section className="pt-16 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 flex items-center px-4 md:px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 lg:gap-16 items-center w-full">
+    <section className="pt-16 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16 flex items-center px-4 md:px-6 relative overflow-hidden">
+      {/* Premium Grid Overlay */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] opacity-20 pointer-events-none z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] animate-grid-drift"></div>
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-[var(--neon-cyan)]/10 to-transparent blur-3xl"></div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 lg:gap-16 items-center w-full relative z-10">
         <RevealSection>
-          <div className="flex items-center gap-3 mb-4 md:mb-6 lg:mb-8 opacity-80">
+          <div className="flex items-center gap-3 mb-4 md:mb-6 lg:mb-8 opacity-80 reveal-stagger-item">
             <span className="text-xs tracking-[2px] uppercase text-[#888]">As Seen In:</span>
             <div className="font-serif font-black text-lg md:text-xl tracking-tight text-white">Forbes</div>
           </div>
 
           <div className="tag-pill">Plaiground</div>
           <h1 className="font-display text-[clamp(2rem,8vw,5rem)] font-bold tracking-tight leading-[1.1] mb-4 md:mb-6 text-white hero-title">
-            <span className="block">AI Revenue Architecture</span>
             <span className="block">
-              for the <span className="editorial">Scaling Enterprise</span>
+              <span className="animate-title-word">
+                <span>AI</span>
+              </span>{" "}
+              <span className="animate-title-word">
+                <span>Revenue</span>
+              </span>{" "}
+              <span className="animate-title-word">
+                <span>Architecture</span>
+              </span>
+            </span>
+            <span className="block">
+              <span className="animate-title-word">
+                <span>for</span>
+              </span>{" "}
+              <span className="animate-title-word">
+                <span>the</span>
+              </span>{" "}
+              <span className="animate-title-word">
+                <span className="editorial">Scaling</span>
+              </span>{" "}
+              <span className="animate-title-word">
+                <span className="editorial">Enterprise</span>
+              </span>
             </span>
           </h1>
           <h2 className="text-base md:text-lg font-light italic text-[var(--neon-cyan)] mb-4 md:mb-6 lg:mb-8 -mt-2 md:-mt-4 block">

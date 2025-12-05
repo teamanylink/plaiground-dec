@@ -508,26 +508,93 @@
   font-size: 1.2rem;
 }
 
-/* Apple-style Animations */
-@keyframes fade-in-blur {
+/* Premium GSAP-style Animations */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@keyframes title-reveal {
+  0% {
+    transform: translateY(120%) skewY(5deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0) skewY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up-scale {
   0% {
     opacity: 0;
+    transform: translateY(40px) scale(0.96);
     filter: blur(10px);
-    transform: translateY(30px) scale(0.95);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0px);
     transform: translateY(0) scale(1);
+    filter: blur(0);
   }
+}
+
+.animate-title-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.2em;
+  /* Prevent descender clipping */
+  margin-bottom: -0.2em;
+}
+
+.animate-title-word>span {
+  display: inline-block;
+  transform: translateY(120%) skewY(5deg);
+  opacity: 0;
+  animation: title-reveal 1.2s var(--ease-out-expo) forwards;
+}
+
+/* Stagger delays for title words */
+.animate-title-word:nth-child(1)>span {
+  animation-delay: 0.1s;
+}
+
+.animate-title-word:nth-child(2)>span {
+  animation-delay: 0.2s;
+}
+
+.animate-title-word:nth-child(3)>span {
+  animation-delay: 0.3s;
+}
+
+.animate-title-word:nth-child(4)>span {
+  animation-delay: 0.4s;
+}
+
+.animate-title-word:nth-child(5)>span {
+  animation-delay: 0.5s;
+}
+
+.animate-title-word:nth-child(6)>span {
+  animation-delay: 0.6s;
 }
 
 .reveal-up {
   opacity: 0;
   filter: blur(10px);
   transform: translateY(30px) scale(0.95);
-  animation: fade-in-blur 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-up-scale 1s var(--ease-out-expo) forwards;
   animation-play-state: paused;
 }
 
@@ -540,7 +607,7 @@
   opacity: 0;
   filter: blur(8px);
   transform: translateY(20px);
-  animation: fade-in-blur 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-up-scale 0.8s var(--ease-out-expo) forwards;
 }
 
 .reveal-up.in-view>*:nth-child(1) {
@@ -563,47 +630,120 @@
   animation-delay: 0.5s;
 }
 
-.anim-list li {
+@keyframes grid-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-24px, 24px);
+  }
+}
+
+.animate-grid-drift {
+  animation: grid-drift 3s linear infinite;
+}
+
+/* Premium Staggered Reveal */
+.reveal-stagger-item {
   opacity: 0;
-  transform: translateX(-10px);
-  transition: 0.4s ease;
+  transform: translateY(20px);
+  filter: blur(5px);
+  transition: all 0.8s var(--ease-out-expo);
 }
 
-.in-view .anim-list li {
+.reveal-up.in-view .reveal-stagger-item {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-.in-view .anim-list li:nth-child(1) {
+/* Auto-stagger delays for up to 10 items */
+.reveal-up.in-view .reveal-stagger-item:nth-child(1) {
   transition-delay: 0.1s;
 }
 
-.in-view .anim-list li:nth-child(2) {
+.reveal-up.in-view .reveal-stagger-item:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.reveal-up.in-view .reveal-stagger-item:nth-child(3) {
   transition-delay: 0.2s;
 }
 
-.in-view .anim-list li:nth-child(3) {
+.reveal-up.in-view .reveal-stagger-item:nth-child(4) {
+  transition-delay: 0.25s;
+}
+
+.reveal-up.in-view .reveal-stagger-item:nth-child(5) {
   transition-delay: 0.3s;
 }
 
-.in-view .anim-list li:nth-child(4) {
+.reveal-up.in-view .reveal-stagger-item:nth-child(6) {
+  transition-delay: 0.35s;
+}
+
+.reveal-up.in-view .reveal-stagger-item:nth-child(7) {
   transition-delay: 0.4s;
 }
 
-.in-view .anim-list li:nth-child(5) {
+.reveal-up.in-view .reveal-stagger-item:nth-child(8) {
+  transition-delay: 0.45s;
+}
+
+.reveal-up.in-view .reveal-stagger-item:nth-child(9) {
   transition-delay: 0.5s;
 }
 
-.in-view .anim-list li:nth-child(6) {
-  transition-delay: 0.6s;
+.reveal-up.in-view .reveal-stagger-item:nth-child(10) {
+  transition-delay: 0.55s;
 }
 
-.in-view .anim-list li:nth-child(7) {
-  transition-delay: 0.7s;
+/* Text Reveal Mask */
+.text-reveal-mask {
+  overflow: hidden;
+  display: block;
 }
 
-.in-view .anim-list li:nth-child(8) {
-  transition-delay: 0.8s;
+.text-reveal-mask>span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1s var(--ease-out-expo);
+}
+
+.reveal-up.in-view .text-reveal-mask>span {
+  transform: translateY(0);
+}
+
+.anim-list li {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.5s var(--ease-out-expo);
+}
+
+.reveal-up.in-view .anim-list li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-up.in-view .anim-list li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.reveal-up.in-view .anim-list li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.reveal-up.in-view .anim-list li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.reveal-up.in-view .anim-list li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.reveal-up.in-view .anim-list li:nth-child(5) {
+  transition-delay: 0.5s;
 }
 
 @keyframes pulse {
@@ -618,7 +758,7 @@
   }
 }
 
-/* Responsive */
+/* Responsive Refinements */
 @media (max-width: 900px) {
   .grid-split {
     grid-template-columns: 1fr !important;
@@ -636,37 +776,66 @@
   }
 
   .hero-title {
-    font-size: 2.8rem !important;
+    font-size: 3.5rem !important;
+    /* Slightly larger for tablet */
+    line-height: 1.1 !important;
   }
 
   .tilt-card {
-    padding: 1.5rem !important;
+    padding: 2rem !important;
+    /* More breathing room */
   }
 
   section {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
+    /* Optimized for mobile */
+    letter-spacing: -0.02em;
   }
 
   .tilt-card {
-    padding: 1.25rem !important;
-    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+    /* Softer corners */
   }
 
   .btn-mega {
-    padding: 1rem 2rem !important;
-    font-size: 0.875rem !important;
+    width: 100%;
+    /* Full width button on mobile */
+    justify-content: center;
+    padding: 1.125rem 2rem !important;
+    font-size: 1rem !important;
+    transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+  }
+
+  .btn-mega:active {
+    transform: scale(0.98);
   }
 
   .tag-pill {
-    font-size: 0.65rem !important;
-    padding: 0.5em 1em !important;
+    font-size: 0.75rem !important;
+    padding: 0.5em 1.2em !important;
+  }
+
+  /* Adjust grid gaps for mobile */
+  .grid-cols-12 {
+    gap: 1rem !important;
+  }
+
+  /* Ensure full width for stacked elements */
+  .col-span-12 {
+    width: 100% !important;
+  }
+
+  .logo-marquee-item {
+    margin-right: 2rem !important;
+    font-size: 1.2rem !important;
   }
 }
 

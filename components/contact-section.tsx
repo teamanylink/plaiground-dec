@@ -56,6 +56,10 @@ export default function ContactSection() {
           </div>
         </TiltCard>
 
+        <div className="text-center mt-24 mb-16 text-white font-display text-2xl md:text-3xl opacity-90 reveal-up">
+          The AI gold rush is happening. <span className="text-[var(--neon-cyan)]">Will you lead or follow?</span>
+        </div>
+
         <footer className="mt-12 md:mt-16 lg:mt-24 py-8 md:py-12 border-t border-white/10 text-[#666]">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8">
             <div>
@@ -63,19 +67,16 @@ export default function ContactSection() {
               <div className="text-xs mt-2">© 2025 Plaiground. All Rights Reserved.</div>
             </div>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-[#888] no-underline hover:text-white transition-colors">
+              <a href="/privacy" className="text-[#888] no-underline hover:text-white transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-[#888] no-underline hover:text-white transition-colors">
+              <a href="/terms" className="text-[#888] no-underline hover:text-white transition-colors">
                 Terms of Service
               </a>
-              <a href="#" className="text-[#888] no-underline hover:text-white transition-colors">
+              <a href="#contact" className="text-[#888] no-underline hover:text-white transition-colors">
                 Contact
               </a>
             </div>
-          </div>
-          <div className="text-center mt-16 text-white font-display text-xl opacity-90">
-            The AI gold rush is happening. <span className="text-[var(--neon-cyan)]">Will you lead or follow?</span>
           </div>
         </footer>
       </RevealSection>
