@@ -17,9 +17,6 @@ export const metadata: Metadata = {
   description:
     "We don't bolt on AI — we re-engineer your core workflows to deliver $100K+ in cost savings and revenue growth, guaranteed.",
   generator: 'v0.app',
-  icons: {
-    icon: '/favicon.ico',
-  },
 }
 
 export default function RootLayout({
